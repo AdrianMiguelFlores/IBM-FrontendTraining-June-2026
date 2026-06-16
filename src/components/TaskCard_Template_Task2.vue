@@ -71,6 +71,15 @@ const props = defineProps(['task']);
 
 // TODO 3: Define emits for 'complete' and 'delete'
 const emit = defineEmits(['complete', 'delete'])
+
+function handleComplete() {
+  emit('complete', props.task.id);
+}
+
+function handleDelete() {
+  emit('delete', props.task.id);
+}
+
 </script>
 
 <template>
@@ -88,11 +97,11 @@ const emit = defineEmits(['complete', 'delete'])
     <div class="task-actions">
       <!-- TODO 7: Add Complete/Undo button — text changes based on task.done -->
       <!--         @click should emit 'complete' with task.id as payload -->
-      <button class="btn-complete">
-
+      <button class="btn-complete" @click="handleComplete()">
+        {{ task.done ? 'Undo' : 'Complete' }}
       </button>
       <!-- TODO 8: Add Delete button — emits 'delete' with task.id -->
-       <button class="btn-delete">
+       <button class="btn-delete" @click="handleDelete()">
         Remove
        </button>
     </div>

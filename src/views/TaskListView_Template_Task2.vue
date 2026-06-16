@@ -20,7 +20,11 @@ const tasks = ref([
 
 // TODO 2: Write handleComplete(id) — toggle the done state of the task with this id
 function handleComplete(id) {
-  // your code here
+  for(const task of tasks.value) {
+    if(task.id === id) {
+      task.done = !task.done;
+    }
+  }
 }
 
 // TODO 3: Write handleDelete(id) — remove the task with this id from the array
@@ -40,21 +44,24 @@ function handleDelete(id) {
          - Listen @delete="handleDelete"
          - Fill the "meta" named slot with the due date
     -->
-<!-- 
-      @complete="???"
-      @delete="???" -->
-
-    Example structure (remove the comment markers and complete it):
-    <TaskCard
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-      @delete="handleDelete(task.id)"
-    >
-      <template #meta>
-        Due: {{ task.dueDate }}
-      </template>
-    </TaskCard>
+    
+    <div v-if="tasks.length !== 0">
+      Example structure (remove the comment markers and complete it):
+      <TaskCard
+        v-for="task in tasks"
+        :key="task.id"
+        :task="task"
+        @complete="handleComplete(task.id)"
+        @delete="handleDelete(task.id)"
+      >
+        <template #meta>
+          Due: {{ task.dueDate }}
+        </template>
+      </TaskCard>
+    </div>
+    <div v-else>
+      <h2 style="color:darkseagreen">All tasks are completed</h2>
+    </div>
    
   </div>
 </template>
