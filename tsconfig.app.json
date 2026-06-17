@@ -8,7 +8,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "checkJs": false,
+    "moduleResolution": "NodeNext", // or "Node16" / "Bundler"
+    "module": "NodeNext"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/router/index.js"]
 }
