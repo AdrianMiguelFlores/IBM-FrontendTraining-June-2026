@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import TaskListView from './views/TaskListView_Template_Task2.vue'
+import router from './router/index.ts'
 
-createApp(TaskListView).mount('#app')
+const app = createApp(App);
+app.use(router);
+app.mount('#app')
