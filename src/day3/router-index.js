@@ -61,7 +61,7 @@ import TaskDetailView from './TaskDetailView.vue';
 import AboutView from './AboutView.vue';
 
 // TODO 2: Import your Pinia task store so the guard can check if a task exists
-import { useTaskStore } from '../stores/taskStore'
+import { useTaskStore } from '../stores/taskStore.js'
 
 const routes = [
   // TODO 3: Add a redirect from '/' to '/home'
