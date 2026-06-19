@@ -61,6 +61,8 @@
 //          Always guard against null before filtering
 // =============================================================
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
 // TODO 1: Export a useFetch function that accepts a url parameter
 export function useFetch(url) {
   // TODO 2: Create three refs — data, loading, error
@@ -71,11 +73,8 @@ export function useFetch(url) {
   onMounted(async () => {
     try {
       // TODO 4: fetch the url, check response.ok, parse JSON into data.value
-      const response = await fetch(url)
-      if (!response.ok) {
-        throw new Error('HTTP ' + response.status)
-      }
-      data.value = await response.json()
+      const response = await axios.get(url)
+      data.value = response.data
     } catch (e) {
       // TODO 5: assign the error message to error.value
       error.value = e.message
